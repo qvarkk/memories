@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float graundRadius = 0.3f;
     public LayerMask graundMask;
     public float speed = 0.1f;
-    public float jumpforce = 800f;
+    public float jumpforce = 400f;
 
     void Start()
     {

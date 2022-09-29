@@ -1088,6 +1088,7 @@ GameObject:
   - component: {fileID: 439826440}
   - component: {fileID: 439826442}
   - component: {fileID: 439826443}
+  - component: {fileID: 439826444}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1175,6 +1176,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bab2a99c055348efbb1ce3bfbd6dbfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &439826444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439826438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d27738f527b4c1c832ef0d85169ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &519420028
@@ -1503,7 +1516,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869860471}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 439826444}
+        m_TargetAssemblyTypeName: startlvl1, Assembly-CSharp
+        m_MethodName: StartLvl1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &869860471
 MonoBehaviour:
   m_ObjectHideFlags: 0

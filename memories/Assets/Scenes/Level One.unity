@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 408164714}
   - component: {fileID: 408164713}
   - component: {fileID: 408164712}
+  - component: {fileID: 408164717}
   - component: {fileID: 408164716}
   m_Layer: 5
   m_Name: Canvas
@@ -438,7 +439,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 408164711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e525cbfdf0041108f9a57c13a7bc7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 88dbdc4cfb84540cbba74afee378f5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &408164717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408164711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7312d6abc79874125b2e8eb8ef64119d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &410720607
@@ -776,7 +789,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1049659251}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: backToMinu, Assembly-CSharp
         m_MethodName: BackToMinnu
         m_Mode: 1
@@ -843,7 +856,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 408164716}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: button, Assembly-CSharp
           m_MethodName: ButtonScale
           m_Mode: 2
@@ -859,7 +872,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 408164716}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: button, Assembly-CSharp
           m_MethodName: ButtonScaleReturn
           m_Mode: 2
@@ -1035,8 +1048,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1049659252}
-  - component: {fileID: 1049659251}
-  - component: {fileID: 1049659250}
   m_Layer: 5
   m_Name: pauseminu
   m_TagString: Untagged
@@ -1044,30 +1055,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1049659250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049659249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8757620b4bd7b4ffcac9919f6c9ef776, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1049659251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049659249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bab2a99c055348efbb1ce3bfbd6dbfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1049659252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1728,9 +1715,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1049659250}
-        m_TargetAssemblyTypeName: mainminu, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 408164717}
+        m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
+        m_MethodName: CloseLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

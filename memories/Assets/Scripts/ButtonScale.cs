@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class button : MonoBehaviour
+public class ButtonScale : MonoBehaviour
 {
-    public void ButtonScale(Transform button)
+    public void ButtonScales(Transform button)
     {
         button.localScale = new Vector3(1.2f, 1.2f, 1f);
     } 

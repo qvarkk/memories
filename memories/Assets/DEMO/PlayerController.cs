@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
 
     [SerializeField] private GameObject groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -12,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public GameController gameController;
     public Transform sprite;
     public float jumpForce;
-    public float jumpBustForce;
+    public Rigidbody2D rb;
 
     void Start()
     {
@@ -58,11 +57,6 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "jumpBuster")
-        {
-            rb.velocity = Vector2.zero;
-            rb.AddForce(Vector2.up * jumpBustForce, ForceMode2D.Impulse);
-        }
         if (other.gameObject.name == "QTE Portal")
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;

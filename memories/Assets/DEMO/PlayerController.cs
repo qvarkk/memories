@@ -68,5 +68,10 @@ public class PlayerController : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             rb.gravityScale = 0;
         }
+        if (other.gameObject.name == "Standart Portal")
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.gravityScale = 10;
+        }
     }
 }

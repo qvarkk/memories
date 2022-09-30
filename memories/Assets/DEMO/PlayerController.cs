@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameController gameController;
     public Transform sprite;
     public float jumpForce;
+    public float jumpBustForce;
 
     void Start()
     {
@@ -52,6 +53,20 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "spike")
         {
             gameController.DeathSequence();
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "jumpBuster")
+        {
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.up * jumpBustForce, ForceMode2D.Impulse);
+        }
+        if (other.gameObject.name == "QTE Portal")
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rb.gravityScale = 0;
         }
     }
 }

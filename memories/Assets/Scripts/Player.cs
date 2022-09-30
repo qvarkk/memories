@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         isGraunded = Physics2D.OverlapCircle(graundCheck.transform.position, graundRadius, graundMask);
         if(Input.GetKeyDown(KeyCode.Space) && isGraunded)
         {
+            
             phisic.AddForce(new Vector3(0, jumpforce, 0));
         }
         player.transform.position += new Vector3(speed, 0, 0);

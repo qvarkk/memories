@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MenuCube : MonoBehaviour
+public class MenuCube : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private float jumpForce;
     [SerializeField] private float speed;
@@ -18,6 +19,10 @@ public class MenuCube : MonoBehaviour
         InvokeRepeating("Jump", 0f, timer);
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Destroy(gameObject);
+    }
     private void Update()
     {
         transform.position += new Vector3(speed * Time.deltaTime, 0, 0);

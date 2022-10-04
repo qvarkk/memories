@@ -9,6 +9,9 @@ public class MenuCube : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float speed;
     [SerializeField] private GameObject groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject sprite;
+    private Color cubeColor;
+    private SpriteRenderer spriteRenderer;
     private GameObject instantiator;
     private Rigidbody2D rb;
     private float timer; 
@@ -16,6 +19,10 @@ public class MenuCube : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        cubeColor = new Color(Random.value, Random.value, Random.value);
+        spriteRenderer.color = cubeColor;
+
         timer = Random.value;
         InvokeRepeating("Jump", 0f, timer);
         instantiator = GameObject.Find("Instantiator");
@@ -26,10 +33,20 @@ public class MenuCube : MonoBehaviour, IPointerClickHandler
         Destroy(gameObject);
         instantiator.GetComponent<MenuInstantiator>().count += 1;
     }
+
     private void Update()
     {
+        if (IsGrounded()) 
+        {
+            Vector3 spriteRotation = sprite.transform.rotation.eulerAngles;
+            spriteRotation.z = Mathf.Round(spriteRotation.z / 90) * 90;
+            sprite.transform.rotation = Quaternion.Euler(spriteRotation);
+        }
+        else
+        {
+            sprite.transform.Rotate(Vector3.back * 0.5f);
+        }
         transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
-
     }
 
     private void Jump()

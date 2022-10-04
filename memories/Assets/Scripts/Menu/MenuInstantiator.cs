@@ -18,6 +18,7 @@ public class MenuInstantiator : MonoBehaviour
     {
         Instantiate(cube, transform);
     }
+    
     void Update()
     {
         if(count == 5 && flag == false)

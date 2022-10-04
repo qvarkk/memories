@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Gamemodes { Cube, QTE};
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField] private GameObject groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    public Gamemodes currentGamemode;
     public GameController gameController;
     public Transform sprite;
     public float jumpForce;
@@ -49,23 +50,27 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "spike")
+        switch (collision.gameObject.tag)
         {
-            gameController.DeathSequence();
+            case "spike":
+                gameController.DeathSequence();
+                break;
         }
-
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    public void ChangeThroughPortal(Gamemodes gamemode) 
     {
-        if (other.gameObject.name == "QTE Portal")
+        // короче вродеб пиздатое решение, еще кучу модов можно захуярить и все должно быть збс
+        switch (gamemode)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-            rb.gravityScale = 0;
-        }
-        if (other.gameObject.name == "Standart Portal")
-        {
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.gravityScale = 10;
+            case Gamemodes.Cube:
+                rb.gravityScale = 10; 
+                currentGamemode = gamemode;
+                break;
+            case Gamemodes.QTE:
+                rb.velocity = Vector2.zero;
+                rb.gravityScale = 0;
+                break;
         }
     }
 }

@@ -1278,6 +1278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube: {fileID: 2574081760983729379, guid: b426483dab519774394e73d4e7a84cf6, type: 3}
+  prikol: {fileID: 450468251640718472, guid: a494344f878e0468c8f1a7e1dd473fdf, type: 3}
+  count: 0
 --- !u!4 &537616877
 Transform:
   m_ObjectHideFlags: 0
@@ -3009,7 +3011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.5001831, y: 0.25219727}
+  m_AnchoredPosition: {x: 1.5002441, y: 0.25219727}
   m_SizeDelta: {x: 1.0048, y: -0.49542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1253992037

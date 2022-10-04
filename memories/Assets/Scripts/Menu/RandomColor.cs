@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomColor : MonoBehaviour
 {
-    private Color color;
+    public Color color;
     void Start()
     {
         var r = Random.Range(0, 255);

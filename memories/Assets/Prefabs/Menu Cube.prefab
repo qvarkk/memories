@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 20
-  speed: 15
+  speed: 10
   groundCheck: {fileID: 6713886513181861614}
   groundLayer:
     serializedVersion: 2
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f74417f21dd4e129db316aca55143b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6713886513181861614
 GameObject:
   m_ObjectHideFlags: 0

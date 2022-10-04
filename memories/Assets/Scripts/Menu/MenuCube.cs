@@ -9,23 +9,27 @@ public class MenuCube : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float speed;
     [SerializeField] private GameObject groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    private GameObject instantiator;
     private Rigidbody2D rb;
-    private float timer;
+    private float timer; 
 
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         timer = Random.value;
         InvokeRepeating("Jump", 0f, timer);
+        instantiator = GameObject.Find("Instantiator");
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         Destroy(gameObject);
+        instantiator.GetComponent<MenuInstantiator>().count += 1;
     }
     private void Update()
     {
         transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+
     }
 
     private void Jump()

@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour
 
   public void ChangeThroughPortal(Gamemodes gamemode, int state)
   {
-    Debug.Log("Tried to change mode");
     // короче вродеб пиздатое решение, еще кучу модов можно захуярить и все должно быть збс
     switch (state)
     {

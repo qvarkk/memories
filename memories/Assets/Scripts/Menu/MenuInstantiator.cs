@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class MenuInstantiator : MonoBehaviour
 {
-    [SerializeField] private GameObject cube;
-    [SerializeField] private GameObject prikol;
-    private bool flag = false;
-    public int count;
+  [SerializeField] private GameObject cube;
+  [SerializeField] private GameObject prikol;
+  private bool flag = false;
+  public int count;
 
-    private void Start()
-    {
-        InvokeRepeating("InstantiateCube", 0f, 3f);
-    }
+  private void Start()
+  {
+    InvokeRepeating("InstantiateCube", 0f, 2f);
+  }
 
-    private void InstantiateCube()
+  private void InstantiateCube()
+  {
+    Instantiate(cube, transform);
+  }
+
+  void Update()
+  {
+    if (count == 5 && flag == false)
     {
-        Instantiate(cube, transform);
+      Instantiate(prikol, new Vector3(0, 5, 1), Quaternion.identity);
+      flag = true;
     }
-    
-    void Update()
-    {
-        if(count == 5 && flag == false)
-        {
-            Instantiate(prikol, new Vector3(0, 5, 1), Quaternion.identity);
-            flag = true;
-        }
-    }
+  }
 }

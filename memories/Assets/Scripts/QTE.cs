@@ -29,6 +29,7 @@ public class QTE : MonoBehaviour
   // если код устраивает, можно нахуй снести все выше
 
   [SerializeField] private KeyCode qteKey;
+  [SerializeField] private Color activatedColor;
   private bool state = false; // на входе в коллизию превращается в тру и на выходе в фолс
   private bool activated = false; // если игрок в коллизии и нажимает нужную кнопку превращается в тру
 
@@ -53,6 +54,7 @@ public class QTE : MonoBehaviour
     if (Input.GetKeyDown(qteKey) && state)
     {
       Debug.Log("Pressed succesfully");
+      gameObject.GetComponent<SpriteRenderer>().color = activatedColor;
       activated = true;
     }
   }

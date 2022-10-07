@@ -4,26 +4,53 @@ using UnityEngine;
 
 public class QTE : MonoBehaviour
 {
-    [SerializeField]private Color activated;
-    public bool _activated = false;
-    private bool flage = false;
-    [SerializeField]private KeyCode UserKey = KeyCode.W;
+  // [SerializeField]private Color activated;
+  // public bool _activated = false;
+  // private bool flage = false;
+  // [SerializeField]private KeyCode UserKey = KeyCode.W;
 
-    void OnTriggerEnter2D(Collider2D other)
+  // void OnTriggerEnter2D(Collider2D other)
+  // {
+  //     flage = true;
+  // }
+  // void OnTriggerExit2D(Collider2D other)
+  // {
+  //     flage = false;
+  // }
+  // void Update()
+  // {
+  //     if(Input.GetKeyDown(UserKey) && flage == true)
+  //     {
+  //         gameObject.GetComponent<SpriteRenderer>().color = activated;
+  //         _activated = true;
+  //     }
+
+  // }
+  [SerializeField] private KeyCode qteKey;
+  private bool state = false;
+  private bool activated = false;
+
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    state = true;
+  }
+
+  private void OnTriggerExit2D(Collider2D other)
+  {
+    if (!activated)
     {
-        flage = true;
+      Debug.Log("Didn't activate");
+      other.gameObject.GetComponent<PlayerController>().gameController.DeathSequence();
     }
-    void OnTriggerExit2D(Collider2D other)
+    state = false;
+  }
+
+  private void Update()
+  {
+    if (state && Input.GetKeyDown(qteKey))
     {
-        flage = false;
+      Debug.Log("Activated");
+      activated = true;
     }
-    void Update()
-    {
-        if(Input.GetKeyDown(UserKey) && flage == true)
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = activated;
-            _activated = true;
-        }
-        
-    }
+  }
 }

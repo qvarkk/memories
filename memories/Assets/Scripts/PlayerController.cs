@@ -57,7 +57,11 @@ public class PlayerController : MonoBehaviour
         break;
       case "booster":
         rb.velocity = Vector2.zero;
+<<<<<<< Updated upstream
         rb.AddForce(Vector2.up * jumpForce * 1.8f, ForceMode2D.Impulse);
+=======
+        rb.AddForce(Vector2.up * jumpForce * 1.75f, ForceMode2D.Impulse); // надо бы задать переменной силу, но мне похуй как то
+>>>>>>> Stashed changes
         break;
     }
   }

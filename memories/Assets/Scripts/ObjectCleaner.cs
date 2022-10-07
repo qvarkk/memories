@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObjectCleaner : MonoBehaviour
 {
-  public GameController gameController;
   private void OnCollisionEnter2D(Collision2D collision)
   {
     Destroy(collision.gameObject);
@@ -12,7 +11,11 @@ public class ObjectCleaner : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
+<<<<<<< Updated upstream
     if (other.gameObject.tag != "QTE")
       Destroy(other.gameObject);
+=======
+    Destroy(other.gameObject);
+>>>>>>> Stashed changes
   }
 }

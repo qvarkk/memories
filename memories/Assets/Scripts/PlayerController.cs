@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
       case "spike":
         gameController.DeathSequence();
         break;
+      case "booster":
+        rb.velocity = Vector2.zero;
+        rb.AddForce(Vector2.up * jumpForce * 1.75f, ForceMode2D.Impulse); // надо бы задать переменной силу, но мне похуй как то
+        break;
     }
   }
 

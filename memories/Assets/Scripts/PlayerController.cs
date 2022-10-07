@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
   public GameController gameController;
   public Transform sprite;
   public float jumpForce;
+  public float jumpBoostForce;
   public Rigidbody2D rb;
 
   void Start()
@@ -56,8 +57,17 @@ public class PlayerController : MonoBehaviour
         gameController.DeathSequence();
         break;
       case "booster":
-        rb.velocity = Vector2.zero;
-        rb.AddForce(Vector2.up * jumpForce * 1.75f, ForceMode2D.Impulse); // надо бы задать переменной силу, но мне похуй как то
+        if(collision.gameObject.GetComponent<SpriteRenderer>().flipY == false) 
+        {
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.up * jumpBoostForce * 1.75f, ForceMode2D.Impulse);
+        }
+        if(collision.gameObject.GetComponent<SpriteRenderer>().flipY == true) 
+        {
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.up * jumpBoostForce * -1.75f, ForceMode2D.Impulse);
+        }
+         // надо бы задать переменной силу, но мне похуй как то
         break;
     }
   }

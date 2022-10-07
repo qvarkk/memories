@@ -4631,6 +4631,7 @@ MonoBehaviour:
   gameController: {fileID: 23603302}
   sprite: {fileID: 671177956}
   jumpForce: 21
+  jumpBoostForce: 21
   rb: {fileID: 0}
 --- !u!1001 &821337144
 PrefabInstance:
@@ -12711,6 +12712,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5788528076394318926, guid: 0aabfb7e681da451d9d062051f0cee47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788528076394318926, guid: 0aabfb7e681da451d9d062051f0cee47, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788528076394318927, guid: 0aabfb7e681da451d9d062051f0cee47, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788528076394318927, guid: 0aabfb7e681da451d9d062051f0cee47, type: 3}
+      propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

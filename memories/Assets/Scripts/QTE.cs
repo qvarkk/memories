@@ -29,13 +29,25 @@ public class QTE : MonoBehaviour
   // если код устраивает, можно нахуй снести все выше
 
   [SerializeField] private Color activatedColor;
-  [SerializeField] private qteSO qte;
+ // [SerializeField] private qteSO qte;
+  [SerializeField] private KeyCode keyCode;
+  [SerializeField] private Sprite[] sprites;
+  private KeyCode[] keyCodes = new KeyCode[]{KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D};
+  private int index;
   private bool state = false; // на входе в коллизию превращается в тру и на выходе в фолс
   private bool activated = false; // если игрок в коллизии и нажимает нужную кнопку превращается в тру
 
   void Start()
   {
-    gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = qte.sprite;
+    for(int i = 0; i < keyCodes.Length; i++)
+    {
+      if(keyCodes[i] == keyCode)
+      {
+        index = i;
+      }
+    }
+    gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[index];
+//    gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = qte.sprite;
   }
 
   private void OnTriggerEnter2D(Collider2D other)
@@ -56,10 +68,11 @@ public class QTE : MonoBehaviour
 
   private void Update()
   {
-    if (Input.GetKeyDown(qte.key) && state)
+    if (Input.GetKeyDown(keyCode) && state)
     {
       Debug.Log("Pressed succesfully");
       gameObject.GetComponent<SpriteRenderer>().color = activatedColor;
+      gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = activatedColor;
       activated = true;
     }
   }

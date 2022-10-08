@@ -126,7 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatedColor: {r: 1, g: 0, b: 0, a: 1}
-  qte: {fileID: 11400000, guid: 1b09f79443c08b641827da9c113e6f4a, type: 2}
+  keyCode: 0
+  sprites:
+  - {fileID: 21300000, guid: fb1f3d098689a48d4b8874ccad28a21b, type: 3}
+  - {fileID: 21300000, guid: 7461dd3a336f94b6d878830e42e38647, type: 3}
+  - {fileID: 21300000, guid: 06d760b81f0354b68b7669d952b516b1, type: 3}
+  - {fileID: 21300000, guid: e42fdc616c5354282b67795ef8055773, type: 3}
 --- !u!1 &8793726626740579455
 GameObject:
   m_ObjectHideFlags: 0

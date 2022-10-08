@@ -3214,6 +3214,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643257738}
     m_Modifications:
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: keyCode
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: fb1f3d098689a48d4b8874ccad28a21b, type: 3}
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7461dd3a336f94b6d878830e42e38647, type: 3}
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 06d760b81f0354b68b7669d952b516b1, type: 3}
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: e42fdc616c5354282b67795ef8055773, type: 3}
     - target: {fileID: 8177223239641237194, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
       propertyPath: m_Name
       value: QTE W
@@ -3478,6 +3498,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643257738}
     m_Modifications:
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: keyCode
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 8177223239641237194, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
       propertyPath: m_Name
       value: QTE W
@@ -9184,6 +9208,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643257738}
     m_Modifications:
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: keyCode
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 8177223239641237194, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
       propertyPath: m_Name
       value: QTE W
@@ -10657,6 +10685,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643257738}
     m_Modifications:
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: keyCode
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 8177223239641237194, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
       propertyPath: m_Name
       value: QTE W
@@ -12248,6 +12280,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643257738}
     m_Modifications:
+    - target: {fileID: -8643638450868146248, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
+      propertyPath: keyCode
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 8177223239641237194, guid: fd5346436d16042c9bb1b1433929c2d7, type: 3}
       propertyPath: m_Name
       value: QTE W

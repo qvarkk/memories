@@ -28,38 +28,14 @@ public class QTE : MonoBehaviour
   // }
   // если код устраивает, можно нахуй снести все выше
 
-  [SerializeField] private KeyCode qteKey;
   [SerializeField] private Color activatedColor;
-  [SerializeField] private Sprite W;
-  [SerializeField] private Sprite A;
-  [SerializeField] private Sprite S;
-  [SerializeField] private Sprite D;
+  [SerializeField] private qteSO qte;
   private bool state = false; // на входе в коллизию превращается в тру и на выходе в фолс
   private bool activated = false; // если игрок в коллизии и нажимает нужную кнопку превращается в тру
 
   void Start()
   {
-    if(qteKey == KeyCode.W)
-    {
-      gameObject.GetComponent<SpriteRenderer>().sprite = W;
-      Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
-    }
-    if(qteKey == KeyCode.A)
-    {
-      gameObject.GetComponent<SpriteRenderer>().sprite = A;
-      Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
-    }
-    if(qteKey == KeyCode.S)
-    {
-      gameObject.GetComponent<SpriteRenderer>().sprite = S;
-      Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
-    }
-    if(qteKey == KeyCode.D)
-    {
-      gameObject.GetComponent<SpriteRenderer>().sprite = D;
-      Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
-    }
-    
+    gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = qte.sprite;
   }
 
   private void OnTriggerEnter2D(Collider2D other)
@@ -80,7 +56,7 @@ public class QTE : MonoBehaviour
 
   private void Update()
   {
-    if (Input.GetKeyDown(qteKey) && state)
+    if (Input.GetKeyDown(qte.key) && state)
     {
       Debug.Log("Pressed succesfully");
       gameObject.GetComponent<SpriteRenderer>().color = activatedColor;

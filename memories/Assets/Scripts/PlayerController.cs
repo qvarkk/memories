@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
   [SerializeField] private GameObject groundCheck;
   [SerializeField] private LayerMask groundLayer;
+  [SerializeField] private GameObject levelObject;
 
   public Gamemodes currentGamemode;
   public GameController gameController;
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
     return false;
   }
 
-  private void OnCollisionEnter2D(Collision2D collision)
+  private void OnTriggerEnter2D(Collider2D collision)
   {
     switch (collision.gameObject.tag)
     {
@@ -57,17 +58,23 @@ public class PlayerController : MonoBehaviour
         gameController.DeathSequence();
         break;
       case "booster":
-        if(collision.gameObject.GetComponent<SpriteRenderer>().flipY == false) 
+        if (collision.gameObject.GetComponent<SpriteRenderer>().flipY == false)
         {
-            rb.velocity = Vector2.zero;
-            rb.AddForce(Vector2.up * jumpBoostForce * 1.75f, ForceMode2D.Impulse);
+          rb.velocity = Vector2.zero;
+          rb.AddForce(Vector2.up * jumpBoostForce * 1.75f, ForceMode2D.Impulse);
         }
-        if(collision.gameObject.GetComponent<SpriteRenderer>().flipY == true) 
+        if (collision.gameObject.GetComponent<SpriteRenderer>().flipY == true)
         {
-            rb.velocity = Vector2.zero;
-            rb.AddForce(Vector2.up * jumpBoostForce * -1.75f, ForceMode2D.Impulse);
+          rb.velocity = Vector2.zero;
+          rb.AddForce(Vector2.up * jumpBoostForce * -1.75f, ForceMode2D.Impulse);
         }
-         // надо бы задать переменной силу, но мне похуй как то
+        // надо бы задать переменной силу, но мне похуй как то
+        break;
+      case "speedUp":
+        levelObject.GetComponent<LevelController>().speed += 5;
+        break;
+      case "speedDown":
+        levelObject.GetComponent<LevelController>().speed -= 5;
         break;
     }
   }

@@ -7,8 +7,9 @@ TagManager:
   - QTE
   - ground
   - spike
-  - SpeedController
   - booster
+  - speedUp
+  - speedDown
   layers:
   - Default
   - TransparentFX

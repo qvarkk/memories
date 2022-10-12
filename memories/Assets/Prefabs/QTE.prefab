@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8177223239641237207}
   - component: {fileID: -8643638450868146248}
   m_Layer: 0
-  m_Name: QTE W
+  m_Name: QTE
   m_TagString: QTE
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

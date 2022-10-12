@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5788528076394318920}
   - component: {fileID: 3092391407595958777}
   m_Layer: 0
-  m_Name: JumpBuster 1
+  m_Name: Jump Booster Up
   m_TagString: booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

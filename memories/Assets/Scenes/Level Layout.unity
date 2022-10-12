@@ -277,7 +277,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &23603302
 MonoBehaviour:
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 110968857}
   - component: {fileID: 110968859}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Level Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,7 +656,7 @@ Transform:
   m_Children:
   - {fileID: 1643257738}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &110968859
 MonoBehaviour:
@@ -1004,7 +1004,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &185869647
 MonoBehaviour:
@@ -1787,7 +1787,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &250820830
 PrefabInstance:
@@ -2573,7 +2573,7 @@ RectTransform:
   - {fileID: 1049659252}
   - {fileID: 1151766497}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9898,7 +9898,7 @@ GameObject:
   - component: {fileID: 1643257740}
   - component: {fileID: 1643257739}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: Level Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

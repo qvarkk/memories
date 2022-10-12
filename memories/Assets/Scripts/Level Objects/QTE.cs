@@ -4,32 +4,7 @@ using UnityEngine;
 
 public class QTE : MonoBehaviour
 {
-  // [SerializeField]private Color activated;
-  // public bool _activated = false;
-  // private bool flage = false;
-  // [SerializeField]private KeyCode UserKey = KeyCode.W;
-
-  // void OnTriggerEnter2D(Collider2D other)
-  // {
-  //     flage = true;
-  // }
-  // void OnTriggerExit2D(Collider2D other)
-  // {
-  //     flage = false;
-  // }
-  // void Update()
-  // {
-  //     if(Input.GetKeyDown(UserKey) && flage == true)
-  //     {
-  //         gameObject.GetComponent<SpriteRenderer>().color = activated;
-  //         _activated = true;
-  //     }
-
-  // }
-  // если код устраивает, можно нахуй снести все выше
-
   [SerializeField] private Color activatedColor;
-  // [SerializeField] private qteSO qte;
   [SerializeField] private KeyCode keyCode;
   [SerializeField] private Sprite[] sprites;
   private KeyCode[] keyCodes = new KeyCode[] { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
@@ -49,7 +24,6 @@ public class QTE : MonoBehaviour
     }
 
     gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[index];
-    //    gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = qte.sprite;
   }
 
   private void OnTriggerEnter2D(Collider2D other)
@@ -78,7 +52,7 @@ public class QTE : MonoBehaviour
     {
       Debug.Log("Pressed succesfully");
       gameObject.GetComponent<SpriteRenderer>().color = activatedColor;
-      // gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = activatedColor;
+      gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = activatedColor;
       activated = true;
     }
   }

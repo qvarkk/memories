@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour
           rb.velocity = Vector2.zero;
           rb.AddForce(Vector2.up * jumpBoostForce * -1.75f, ForceMode2D.Impulse);
         }
-        // надо бы задать переменной силу, но мне похуй как то
         break;
       case "speedUp":
         levelObject.GetComponent<LevelController>().speed += 5;

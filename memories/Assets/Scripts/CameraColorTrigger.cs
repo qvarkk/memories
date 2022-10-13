@@ -17,7 +17,8 @@ public class CameraColorTrigger : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    StartCoroutine(camScript.ChangeCameraColor(newColor, colorSpeed));
+    if(other.gameObject.tag == "Player")
+      StartCoroutine(camScript.ChangeCameraColor(newColor, colorSpeed));
     if (other.gameObject.tag == "Player")
       cam.GetComponent<Camera>().orthographicSize = cam.GetComponent<Camera>().orthographicSize / zoomForce;
   }

@@ -16,6 +16,7 @@ public class CameraAngleTrigger : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    StartCoroutine(camScript.ChangeCameraAngle(newAngle, angleSpeed));
+    if(other.gameObject.tag == "Player")
+      StartCoroutine(camScript.ChangeCameraAngle(newAngle, angleSpeed));
   }
 }

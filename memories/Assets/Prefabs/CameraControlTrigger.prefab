@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3163930421508010505}
   - component: {fileID: 3163930421508010504}
   - component: {fileID: 3163930421508010551}
+  - component: {fileID: 314818224249670152}
   m_Layer: 0
   m_Name: CameraControlTrigger
   m_TagString: Untagged
@@ -71,9 +72,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f2c96fc39174d6fa3747af3f2e7782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorChangeSpeed: 0
-  angleChangeSpeed: 0
   newColor: {r: 0.9716981, g: 0.03208439, b: 0.03208439, a: 1}
-  angle: 0
+  colorSpeed: 2
+  cam: {fileID: 0}
   zoomForce: 1
-  Camera: {fileID: 0}
+--- !u!114 &314818224249670152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163930421508010550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8758693246b459e4f9243328e2b3820d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newAngle: 0
+  angleSpeed: 2
+  cam: {fileID: 0}

@@ -10,6 +10,7 @@ TagManager:
   - booster
   - speedUp
   - speedDown
+  - important
   layers:
   - Default
   - TransparentFX

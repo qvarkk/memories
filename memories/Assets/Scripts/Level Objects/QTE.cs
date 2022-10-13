@@ -35,7 +35,6 @@ public class QTE : MonoBehaviour
   {
     if (!activated)
     {
-      Debug.Log("Haven't activated in time");
       try
       {
         other.gameObject.GetComponent<PlayerController>().gameController.DeathSequence();
@@ -50,7 +49,6 @@ public class QTE : MonoBehaviour
   {
     if (Input.GetKeyDown(keyCode) && state)
     {
-      Debug.Log("Pressed succesfully");
       gameObject.GetComponent<SpriteRenderer>().color = activatedColor;
       gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = activatedColor;
       activated = true;

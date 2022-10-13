@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
-  [SerializeField] private Transform playerPos;
-  private Vector3 camPos;
+  [SerializeField] Transform playerPos;
+  Camera cum;
 
   private void Start()
   {
-    camPos = gameObject.transform.position;
+    cum = gameObject.GetComponent<Camera>();
   }
 
-  private void Update()
+  public IEnumerator ChangeCameraColor(Color newColor, float colorSpeed)
   {
-    if (playerPos.position.y - gameObject.transform.position.y > 3)
+    Color startColor = cum.backgroundColor;
+    float colorChangePercentage = 0f;
+
+    while (colorChangePercentage < 1f)
     {
-      gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.5f, gameObject.transform.position.z), 0.1f);
+      colorChangePercentage += Time.deltaTime * colorSpeed;
+      cum.backgroundColor = Color.Lerp(startColor, newColor, colorChangePercentage);
+      yield return new WaitForEndOfFrame();
     }
-    else if (playerPos.position.y - gameObject.transform.position.y < -3)
+  }
+
+  public IEnumerator ChangeCameraAngle(int newAngle, float angleSpeed)
+  {
+    Quaternion angleNow = cum.transform.rotation;
+    float angleChangePercentage = 0f;
+
+    while (angleChangePercentage < 1f)
     {
-      gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.5f, gameObject.transform.position.z), 0.1f);
+      angleChangePercentage += Time.deltaTime * angleSpeed;
+      cum.transform.rotation = Quaternion.Lerp(angleNow, Quaternion.Euler(0, 0, newAngle), angleChangePercentage);
+      yield return new WaitForEndOfFrame();
     }
   }
 }

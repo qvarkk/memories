@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
   [SerializeField] private GameObject groundCheck;
   [SerializeField] private LayerMask groundLayer;
   [SerializeField] private GameObject levelObject;
+  [SerializeField] private ParticleSystem particle;
 
   public Gamemodes currentGamemode;
   public GameController gameController;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
       Vector3 spriteRotation = sprite.rotation.eulerAngles;
       spriteRotation.z = Mathf.Round(spriteRotation.z / 90) * 90;
       sprite.rotation = Quaternion.Euler(spriteRotation);
+      particle.Play();
 
       if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
       {
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     else
     {
       sprite.Rotate(new Vector3(0, 0, -1));
+      particle.Stop();
     }
   }
 

@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     deathParticles.Play();
     StartCoroutine(DeathSquenceCoroutine());
     levelGrid.GetComponent<LevelController>().enabled = false;
+    if (sprite != null)
+      sprite.GetComponentInParent<PlayerController>().enabled = false;
     Destroy(sprite);
     Destroy(playerParticles);
   }

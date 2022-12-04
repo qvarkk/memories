@@ -11,6 +11,7 @@ TagManager:
   - speedUp
   - speedDown
   - important
+  - nftImage
   layers:
   - Default
   - TransparentFX

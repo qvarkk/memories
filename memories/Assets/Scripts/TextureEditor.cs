@@ -1,35 +1,35 @@
-using System.Net.NetworkInformation;
-using System.Net.Http.Headers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TextureEditor : MonoBehaviour
 {
-    [SerializeField]private Texture2D texture;
-    [SerializeField]private FilterMode filterMode;
-    [SerializeField]private TextureWrapMode textureWrapMode;
-    [SerializeField][Range(2,512)]private int textureSize = 64;
-    [SerializeField]private Material material;
-    [SerializeField]private Camera camera;
-    [SerializeField]private Collider collider;
-    [SerializeField]private Image brushColor;
-    [SerializeField]private Slider sizeValue;
-    [SerializeField]private Slider redValue;
-    [SerializeField]private Slider greenValue;
-    [SerializeField]private Slider blueValue;
-    [SerializeField]private Slider alphaValue;
+    [SerializeField] private Texture2D texture;
+    [SerializeField] private FilterMode filterMode;
+    [SerializeField] private TextureWrapMode textureWrapMode;
+    [SerializeField] [Range(2,512)] private int textureSize = 64;
+    [SerializeField] private Material material;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private Collider _collider;
+    [SerializeField] private Image brushColor;
+    [SerializeField] private Slider sizeValue;
+    [SerializeField] private Slider redValue;
+    [SerializeField] private Slider greenValue;
+    [SerializeField] private Slider blueValue;
+    /*[SerializeField]*/ private Slider alphaValue;
+    [SerializeField] private TMP_InputField nameInput;
 
+    private int clickCount = 0;
     private int oldReyX, oldReyY;
-
 
     void Start()
     {
-        alphaValue.value = 1;
+        // alphaValue.value = 1;
     }
-
-
 
     void OnValidate()
     {
@@ -51,17 +51,17 @@ public class TextureEditor : MonoBehaviour
     void Update()
     {
         int brushSize = (int)(sizeValue.value * textureSize);
-        Color activeColor = new Color(redValue.value, greenValue.value, blueValue.value, alphaValue.value);
+        Color activeColor = new Color(redValue.value, greenValue.value, blueValue.value, 1);
         if(brushColor.color != activeColor)
         {
             brushColor.color = activeColor;
         }
         if(Input.GetMouseButton(0))
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
-            if(collider.Raycast(ray, out hit, 100f))
+            if(_collider.Raycast(ray, out hit, 100f))
             {
                 int rayX = (int)(hit.textureCoord.x * textureSize);
                 int rayY = (int)(hit.textureCoord.y * textureSize);
@@ -84,6 +84,7 @@ public class TextureEditor : MonoBehaviour
                                     Color oldColor = texture.GetPixel(pixelX, pixelY);
                                     Color resultColor = Color.Lerp(oldColor, activeColor, activeColor.a);
                                     texture.SetPixel(pixelX, pixelY, resultColor);
+                                    clickCount++;
                                 }
                             }
                         } 
@@ -91,9 +92,32 @@ public class TextureEditor : MonoBehaviour
                     oldReyX = rayX;
                     oldReyY = rayY;
                 }
-
                 texture.Apply();
             }
+        }
+    }
+
+    public void SavePlayerImage()
+    {
+        if (nameInput.text != "" && clickCount > 0)
+        {
+            if (PlayerPrefs.GetInt("TexturesQuantity") > 5)
+            {
+                Debug.Log("дохуя хочешь");
+                return;
+            }
+
+            byte[] textureBytes = texture.EncodeToPNG();
+            File.WriteAllBytes(Application.persistentDataPath + "playerTexture" + (PlayerPrefs.GetInt("TexturesQuantity") + 1).ToString(), textureBytes);
+
+            PlayerPrefs.SetInt("TexturesQuantity", PlayerPrefs.GetInt("TexturesQuantity") + 1);
+            PlayerPrefs.SetString("TextureName" + (PlayerPrefs.GetInt("TexturesQuantity")).ToString(), nameInput.text);
+
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            Debug.Log("пошел нахуйф");
         }
     }
 }

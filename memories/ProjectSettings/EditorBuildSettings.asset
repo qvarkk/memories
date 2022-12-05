@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Addons/Web3Unity/Scenes/WalletLogin.unity
+    path: Assets/Scenes/WalletLogin.unity
     guid: cc28e1075e9584f1698219d041278648
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Layout.unity
     guid: 937080455c9dbe04a90001eb31cd711c
   - enabled: 1
-    path: "Assets/Scenes/\u0421onstructor.unity"
-    guid: b9c5d947cb46241efbab7e59b0e710ac
+    path: Assets/Scenes/SkinEditor.unity
+    guid: ade16b3696c304df59ad4164557fb4ee
   m_configObjects: {}

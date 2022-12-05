@@ -25,11 +25,6 @@ public class AddNFTPrompt : MonoBehaviour
         public string image;
     }
 
-    void Start()
-    {
-        Debug.Log(Application.persistentDataPath);
-    }
-
     async public void StartValidation()
     {
         contract = contractInput.text;

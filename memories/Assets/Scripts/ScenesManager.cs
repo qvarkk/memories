@@ -7,7 +7,7 @@ public class ScenesManager : MonoBehaviour
 {
   public void LoadMainMenu()
   {
-    SceneManager.LoadScene(0);
+    SceneManager.LoadScene(1);
   }
 
   public void LoadLevel(int levelNumber)
@@ -17,7 +17,7 @@ public class ScenesManager : MonoBehaviour
 
   public void LoadConstructor()
   {
-    SceneManager.LoadScene(2);
+    SceneManager.LoadScene(3);
   }
 
   public void ExitGame()

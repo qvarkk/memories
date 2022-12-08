@@ -20,6 +20,7 @@ public class AddNFTPrompt : MonoBehaviour
     [SerializeField] TMP_InputField tokenIdInput;
     [SerializeField] GameObject errorField;
     [SerializeField] TMP_Text errorText;
+    [SerializeField] TMP_Dropdown standard;
 
     public class Response {
         public string image;
@@ -31,9 +32,16 @@ public class AddNFTPrompt : MonoBehaviour
         account = PlayerPrefs.GetString("Account");
         tokenId = tokenIdInput.text;
 
-        BigInteger balanceOfNFT = await ERC1155.BalanceOf(chain, network, contract, account, tokenId);
+        BigInteger balanceOf1155 = 0;
+        int balanceOf721 = 0;
 
-        if (balanceOfNFT > 0)
+        if(standard.value == 1)
+            balanceOf1155 = await ERC1155.BalanceOf(chain, network, contract, account, tokenId);
+        else if(standard.value == 0)
+            balanceOf721 = await ERC721.BalanceOf(chain, network, contract, account, tokenId);
+        
+
+        if (balanceOf1155 > 0 || balanceOf721 > 0)
         {
             for (int i = 1; i < PlayerPrefs.GetInt("SkinsQuantity") + 1; i++)
             {
@@ -60,8 +68,15 @@ public class AddNFTPrompt : MonoBehaviour
     async private void LoadAndSaveNFTTexture()
     {
         // fetch uri
-        string uri = await ERC1155.URI(chain, network, contract, tokenId);
+        string uri = "";
+        if(standard.value == 1)
+            uri = await ERC1155.URI(chain, network, contract, tokenId);
+        else if(standard.value == 0)
+            uri = await ERC1155.URI(chain, network, contract, tokenId);
+
+
         print("uri: " + uri);
+        
 
         // fetch json from uri
         UnityWebRequest webRequest = UnityWebRequest.Get(uri);

@@ -108,7 +108,7 @@ public class TextureEditor : MonoBehaviour
             }
 
             byte[] textureBytes = texture.EncodeToPNG();
-            File.WriteAllBytes(Application.persistentDataPath + "playerTexture" + (PlayerPrefs.GetInt("TexturesQuantity") + 1).ToString(), textureBytes);
+            File.WriteAllBytes(Application.persistentDataPath + "playerTexture" + (PlayerPrefs.GetInt("TexturesQuantity") + 1).ToString() + ".png", textureBytes);
 
             PlayerPrefs.SetInt("TexturesQuantity", PlayerPrefs.GetInt("TexturesQuantity") + 1);
             PlayerPrefs.SetString("TextureName" + (PlayerPrefs.GetInt("TexturesQuantity")).ToString(), nameInput.text);

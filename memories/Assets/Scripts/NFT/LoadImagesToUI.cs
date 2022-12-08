@@ -27,13 +27,13 @@ public class LoadImagesToUI : MonoBehaviour
 
             imageRenderer = imageToChange.GetComponent<Image>();
 
-            if (!File.Exists(Application.persistentDataPath + "playerTexture" + i.ToString()))
+            if (!File.Exists(Application.persistentDataPath + "playerTexture" + i.ToString() + ".png"))
             {
                 Debug.Log("Error");
                 return;
             }
 
-            byte[] byteTexture = File.ReadAllBytes(Application.persistentDataPath + "playerTexture" + i.ToString());
+            byte[] byteTexture = File.ReadAllBytes(Application.persistentDataPath + "playerTexture" + i.ToString() + ".png");
             Texture2D loadedTexture = new Texture2D(0, 0);
             loadedTexture.LoadImage(byteTexture);
             imageRenderer.sprite = Sprite.Create(loadedTexture, new Rect(0f, 0f, loadedTexture.width, loadedTexture.height), Vector2.zero);

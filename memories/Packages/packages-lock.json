@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.nftport.nftport": {
+      "version": "https://github.com/nftport/nftport-unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
+      },
+      "hash": "d395a1a2f10f4995dce6e879eefe678983f69240"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,
@@ -157,7 +166,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.0.2",
-      "depth": 2,
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

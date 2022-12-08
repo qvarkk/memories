@@ -12,16 +12,18 @@ public class LoadNTFToUI : MonoBehaviour
     [SerializeField] TMP_Text contractList;
     [SerializeField] TMP_Text imageList;
     [SerializeField] GameObject image;
+    [SerializeField] GameObject coordinatesSemple;
     GameObject[] imagesArray;
     GameObject imageToChange;
 
     public void Start()
     {
+
         int k = 0;
         for (int i = 1; i < PlayerPrefs.GetInt("SkinsQuantity") + 1; i++)
         {
             contractList.text += "\n\n" + PlayerPrefs.GetString("SkinContract" + i.ToString());
-            Instantiate(image, new Vector3(775f, 400f - k, 0f), Quaternion.identity, imageList.transform);
+            Instantiate(image, coordinatesSemple.transform.position += Vector3.up * -k, Quaternion.identity, imageList.transform);
 
             imagesArray = GameObject.FindGameObjectsWithTag("nftImage");
             imageToChange = imagesArray[i - 1];

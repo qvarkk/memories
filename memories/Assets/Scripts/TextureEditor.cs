@@ -11,7 +11,7 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] private Texture2D texture;
     [SerializeField] private FilterMode filterMode;
     [SerializeField] private TextureWrapMode textureWrapMode;
-    [SerializeField] [Range(2,512)] private int textureSize = 64;
+    [SerializeField] [Range(2,512)] private int textureSize = 512;
     [SerializeField] private Material material;
     [SerializeField] private Camera _camera;
     [SerializeField] private Collider _collider;

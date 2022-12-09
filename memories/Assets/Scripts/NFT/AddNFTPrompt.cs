@@ -14,16 +14,22 @@ public class AddNFTPrompt : MonoBehaviour
 {
     Image imageRenderer;
 
-    [SerializeField] TMP_Text contractList;
-    [SerializeField] TMP_Text imageList;
+    [SerializeField] public TMP_Text contractList;
+    [SerializeField] public TMP_Text imageList;
     [SerializeField] GameObject image;
     [SerializeField] GameObject[] coordinatesSemple;
+    [SerializeField] Button reloadButton;
 
     GameObject[] imagesArray;
     GameObject imageToChange;
     
     [SerializeField] GameObject errorField;
     [SerializeField] TMP_Text errorText;
+    [SerializeField] GameObject successField;
+    [SerializeField] TMP_Text successText;
+    [SerializeField] GameObject loadingField;
+    [SerializeField] TMP_Text loadingText;
+
 
     NFTs_model NFTsOfUser;
 
@@ -32,14 +38,14 @@ public class AddNFTPrompt : MonoBehaviour
     }
 
     public void StartAccountCheck() {
-        
-
         NFTs_OwnedByAnAccount
             .Initialize()
             .SetChain(NFTs_OwnedByAnAccount.Chains.goerli)
             .SetAddress(PlayerPrefs.GetString("Account"))
             .SetInclude(NFTs_OwnedByAnAccount.Includes.metadata)
-            .OnError(error=>Debug.Log(error))
+            .OnError(error=> {
+                ThrowAnError("Произошла ошибка на стороне сервера. " + error);
+            })
             .OnComplete(NFTs=> {
                 NFTsOfUser = NFTs;
                 SaveAvailableNFTs(NFTsOfUser);
@@ -54,9 +60,11 @@ public class AddNFTPrompt : MonoBehaviour
         bool wereAnyErrors = false;
 
         ClearNFTs();
+        ThrowALoadingScreen(true, "Ищем ваши NFT...");
 
         if (amount > 0)
         {
+            reloadButton.interactable = false;
             for (int i = 0; i < amount && savedImages < 5; i++)
             {
                 string contract = NFTsOfUser.nfts[i].contract_address;
@@ -89,28 +97,32 @@ public class AddNFTPrompt : MonoBehaviour
                     PlayerPrefs.SetString("SkinContract" + PlayerPrefs.GetInt("SkinsQuantity").ToString(), contract + tokenId);
 
                     savedImages++;
-                    Debug.Log("File written to disk!");
                 }
                 else
                 {
                     wereAnyErrors = true;
                 }
-
-                if (wereAnyErrors)
-                {
-                    ThrowAnError("У некоторых/всех NFT на вашем аккаунте не оказалось метадаты");
-                }
-                else
-                {
-                    ThrowAnError("Все NFT были успешно загружены");
-                }
+            }
+            if (wereAnyErrors && savedImages > 1)
+            {
+                ThrowAnError("Все NFT были загружены, кроме тех, у которых отсутсвовала метадата :(");
+            }
+            else if (savedImages == 0)
+            {
+                ThrowAnError("У вас не было подходящих NFT на аккаунте :(");
+            }
+            else
+            {
+                ThrowAnSuccessMessage("Все NFT были успешно загружены!");
             }
             ReloadNFTs();
+            reloadButton.interactable = true;
+            ThrowALoadingScreen();
         }
     }
     public void ReloadNFTs()
     {
-        
+        ThrowALoadingScreen(true, "Обновляем информацию...");
         for (int i = 1; i < PlayerPrefs.GetInt("SkinsQuantity") + 1; i++)
         {
             if (!File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + i.ToString()) + ".png"))
@@ -118,6 +130,7 @@ public class AddNFTPrompt : MonoBehaviour
                 Debug.Log("Error");
                 continue;
             }
+
             Vector3 coord = coordinatesSemple[i-1].transform.position;
             contractList.text += "\n\n" + PlayerPrefs.GetString("SkinContract" + i.ToString());
             Instantiate(image, coord, Quaternion.identity, imageList.transform);
@@ -131,8 +144,8 @@ public class AddNFTPrompt : MonoBehaviour
             Texture2D loadedTexture = new Texture2D(0, 0);
             loadedTexture.LoadImage(byteTexture);
             imageRenderer.sprite = Sprite.Create(loadedTexture, new Rect(0f, 0f, loadedTexture.width, loadedTexture.height), Vector2.zero);
-            
         }
+        ThrowALoadingScreen();
     }
 
     public void ClearNFTs(){
@@ -151,10 +164,21 @@ public class AddNFTPrompt : MonoBehaviour
         
     }
 
-    private void ThrowAnError(string error)
+    public void ThrowAnError(string error)
     {
         errorField.SetActive(true);
         errorText.text = error;
     }
 
+    public void ThrowAnSuccessMessage(string msg)
+    {
+        successField.SetActive(true);
+        successText.text = msg;
+    }
+
+    public void ThrowALoadingScreen(bool state = false, string msg = "")
+    {
+        loadingField.SetActive(state);
+        loadingText.text = msg;
+    }
 }

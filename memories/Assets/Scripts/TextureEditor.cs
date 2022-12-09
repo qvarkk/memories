@@ -120,4 +120,9 @@ public class TextureEditor : MonoBehaviour
             Debug.Log("пошел нахуйф");
         }
     }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

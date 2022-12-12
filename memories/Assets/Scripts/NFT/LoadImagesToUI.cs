@@ -16,7 +16,11 @@ public class LoadImagesToUI : MonoBehaviour
     GameObject imageToChange;
     [SerializeField] AddNFTPrompt script;
 
-    public void Start()
+    private void Start() {
+        RefreshPictures();
+    }
+
+    public void RefreshPictures()
     {
         for (int i = 1; i < PlayerPrefs.GetInt("TexturesQuantity") + 1; i++)
         {
@@ -40,5 +44,21 @@ public class LoadImagesToUI : MonoBehaviour
             loadedTexture.LoadImage(byteTexture);
             imageRenderer.sprite = Sprite.Create(loadedTexture, new Rect(0f, 0f, loadedTexture.width, loadedTexture.height), Vector2.zero);
         }
+    }
+
+    public void DeletePicture()
+    {
+        for (int i = 1; i < PlayerPrefs.GetInt("TexturesQuantity") + 1; i++)
+        {
+            if (!File.Exists(Application.persistentDataPath + "/playerTexture" + i.ToString() + ".png"))
+            {
+                script.ThrowAnError("Произошла системная ошибка. Нахуя ты файлы дергал.");
+                continue;
+            }
+            File.Delete(Application.persistentDataPath + "/" + "playerTexture" + i.ToString() + ".png");
+            PlayerPrefs.SetString("TextureName" + i.ToString(), "");
+        }
+        PlayerPrefs.SetInt("TexturesQuantity", 0);
+        RefreshPictures();
     }
 }

@@ -30,7 +30,12 @@ public class AddNFTPrompt : MonoBehaviour
     [SerializeField] TMP_Text successText;
     [SerializeField] GameObject loadingField;
     [SerializeField] TMP_Text loadingText;
+    [SerializeField] GameObject confirmField;
+    [SerializeField] TMP_Text confirmText;
     [SerializeField] TMP_Dropdown dropdown;
+
+    [SerializeField] Button confirmButton;
+    [SerializeField] Button cancelButton;
 
 
     NFTs_model NFTsOfUser;
@@ -183,6 +188,22 @@ public class AddNFTPrompt : MonoBehaviour
         loadingField.SetActive(state);
         loadingText.text = msg;
     }
+
+    public void ThrowAConfirmScreen(string msg, Action yesAction)
+    {
+        confirmField.SetActive(true);
+        confirmText.text = msg;
+
+        confirmButton.onClick.AddListener(() => {
+            confirmField.SetActive(false);
+            yesAction();
+        });
+        cancelButton.onClick.AddListener(() => {
+            confirmField.SetActive(false);
+            yesAction = null;
+        });
+    }
+
     public void ChooseNFT(){
         if (File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()) + ".png")){
             PlayerPrefs.SetString("SelectedSkin", PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()));

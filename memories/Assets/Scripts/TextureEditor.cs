@@ -20,16 +20,12 @@ public class TextureEditor : MonoBehaviour
     [SerializeField] private Slider redValue;
     [SerializeField] private Slider greenValue;
     [SerializeField] private Slider blueValue;
-    /*[SerializeField]*/ private Slider alphaValue;
+    [SerializeField] private Slider alphaValue;
     [SerializeField] private TMP_InputField nameInput;
+    [SerializeField] private AddNFTPrompt script;
 
     private int clickCount = 0;
     private int oldReyX, oldReyY;
-
-    void Start()
-    {
-        // alphaValue.value = 1;
-    }
 
     void OnValidate()
     {
@@ -51,7 +47,7 @@ public class TextureEditor : MonoBehaviour
     void Update()
     {
         int brushSize = (int)(sizeValue.value * textureSize);
-        Color activeColor = new Color(redValue.value, greenValue.value, blueValue.value, 1);
+        Color activeColor = new Color(redValue.value, greenValue.value, blueValue.value, alphaValue.value);
         if(brushColor.color != activeColor)
         {
             brushColor.color = activeColor;
@@ -99,30 +95,32 @@ public class TextureEditor : MonoBehaviour
 
     public void SavePlayerImage()
     {
-        if (nameInput.text != "" && clickCount > 0)
-        {
-            if (PlayerPrefs.GetInt("TexturesQuantity") > 5)
+        script.ThrowAConfirmScreen("Вы действительно хотите сохранить картинку?", () => {
+            if (nameInput.text != "" && clickCount > 0)
             {
-                Debug.Log("дохуя хочешь");
-                return;
+                if (PlayerPrefs.GetInt("TexturesQuantity") > 5)
+                {
+                    script.ThrowAnError("Лимит картинок 5 штук, попробуйте очистить список");
+                    return;
+                }
+
+                byte[] textureBytes = texture.EncodeToPNG();
+                File.WriteAllBytes(Application.persistentDataPath + "/playerTexture" + (PlayerPrefs.GetInt("TexturesQuantity") + 1).ToString() + ".png", textureBytes);
+
+                PlayerPrefs.SetInt("TexturesQuantity", PlayerPrefs.GetInt("TexturesQuantity") + 1);
+                PlayerPrefs.SetString("TextureName" + (PlayerPrefs.GetInt("TexturesQuantity")).ToString(), nameInput.text);
+
+                SceneManager.LoadScene(1);
             }
-
-            byte[] textureBytes = texture.EncodeToPNG();
-            File.WriteAllBytes(Application.persistentDataPath + "/playerTexture" + (PlayerPrefs.GetInt("TexturesQuantity") + 1).ToString() + ".png", textureBytes);
-
-            PlayerPrefs.SetInt("TexturesQuantity", PlayerPrefs.GetInt("TexturesQuantity") + 1);
-            PlayerPrefs.SetString("TextureName" + (PlayerPrefs.GetInt("TexturesQuantity")).ToString(), nameInput.text);
-
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            Debug.Log("пошел нахуйф");
-        }
+            else
+            {
+                script.ThrowAnError("Задайте имя для вашего рисунка");
+            }
+        });
     }
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(1);
+        script.ThrowAConfirmScreen("Вы действительно хотите вернуться?", () => {SceneManager.LoadScene(1); Debug.Log("qqqq");});
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 using TMPro;
 using NFTPort;
 using UnityEngine.UI;
+using System.Net;
 
 
 
@@ -29,6 +30,7 @@ public class AddNFTPrompt : MonoBehaviour
     [SerializeField] TMP_Text successText;
     [SerializeField] GameObject loadingField;
     [SerializeField] TMP_Text loadingText;
+    [SerializeField] TMP_Dropdown dropdown;
 
 
     NFTs_model NFTsOfUser;
@@ -180,5 +182,14 @@ public class AddNFTPrompt : MonoBehaviour
     {
         loadingField.SetActive(state);
         loadingText.text = msg;
+    }
+    public void ChooseNFT(){
+        if (File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()) + ".png")){
+            PlayerPrefs.SetString("SelectedSkin", PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()));
+            ThrowAnSuccessMessage("Скин успешно выбран!!!");
+        }
+        else{
+            ThrowAnError("ті больной?");
+        }
     }
 }

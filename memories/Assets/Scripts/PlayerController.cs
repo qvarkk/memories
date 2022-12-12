@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
       if (IsGrounded())
       {
         Vector3 spriteRotation = sprite.rotation.eulerAngles;
-        spriteRotation.z = Mathf.Round(spriteRotation.z / 90) * 90;
+        spriteRotation.y = Mathf.Round(spriteRotation.y / 90) * 90;
         sprite.rotation = Quaternion.Euler(spriteRotation);
       }
     }
@@ -70,11 +70,11 @@ public class PlayerController : MonoBehaviour
 
   private void TiltTheShip()
   {
-    if (lastKnownHeight > gameObject.transform.position.y && sprite.rotation.z > -0.34)
+    if (lastKnownHeight > gameObject.transform.position.y && sprite.rotation.y > -0.34)
     {
       sprite.Rotate(new Vector3(0, 0, -3.69f));
     }
-    else if (lastKnownHeight < gameObject.transform.position.y && sprite.rotation.z < 0.34)
+    else if (lastKnownHeight < gameObject.transform.position.y && sprite.rotation.y < 0.34)
     {
       sprite.Rotate(new Vector3(0, 0, +1.75f));
     }

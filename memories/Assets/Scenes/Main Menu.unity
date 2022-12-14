@@ -325,8 +325,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2332,8 +2332,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3415,7 +3415,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.09803922, g: 0.16470589, b: 0.3372549, a: 1}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5728,7 +5728,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5807,6 +5807,7 @@ GameObject:
   - component: {fileID: 1001981536}
   - component: {fileID: 1001981535}
   - component: {fileID: 1001981534}
+  - component: {fileID: 1001981537}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -5854,7 +5855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3706d83fff6b55f44a8d8d8e113024b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59d04a6dc61854864b3f00b789692cfc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5928,6 +5929,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001981532}
   m_CullTransparentMesh: 1
+--- !u!114 &1001981537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001981532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScales
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1001981533}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1001981533}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1001981533}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1003366382
 GameObject:
   m_ObjectHideFlags: 0
@@ -6735,6 +6797,7 @@ GameObject:
   - component: {fileID: 1164216212}
   - component: {fileID: 1164216211}
   - component: {fileID: 1164216210}
+  - component: {fileID: 1164216213}
   m_Layer: 5
   m_Name: Constructor Button
   m_TagString: Untagged
@@ -6782,7 +6845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: fc2e023e07e0e8440b11216a4974b6cf, type: 3}
+  m_Texture: {fileID: 2800000, guid: d3d11c3d68853474b8ca4486b14a30c5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6865,6 +6928,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164216208}
   m_CullTransparentMesh: 1
+--- !u!114 &1164216213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164216208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScales
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1164216209}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1164216209}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1164216209}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1173022700
 GameObject:
   m_ObjectHideFlags: 0
@@ -7230,8 +7354,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9951,6 +10075,7 @@ GameObject:
   - component: {fileID: 1729864732}
   - component: {fileID: 1729864731}
   - component: {fileID: 1729864730}
+  - component: {fileID: 1729864733}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -9998,7 +10123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eca5a17547ec4ec49a83bd3df63eb0a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e17e2c0f6d2014615815e9ffc16fe902, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10084,6 +10209,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729864728}
   m_CullTransparentMesh: 1
+--- !u!114 &1729864733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729864728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScales
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1729864729}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1729864729}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1729864729}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1743361046
 GameObject:
   m_ObjectHideFlags: 0
@@ -10339,8 +10525,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10995,7 +11181,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.28235295, g: 0.49411765, b: 0.6901961, a: 1}
+  m_Color: {r: 0.5137255, g: 0.8431373, b: 0.92549026, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11108,6 +11294,7 @@ GameObject:
   - component: {fileID: 1978633297}
   - component: {fileID: 1978633296}
   - component: {fileID: 1978633295}
+  - component: {fileID: 1978633298}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -11229,6 +11416,67 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1978633298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978633293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScales
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1978633294}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1978633294}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2075750478}
+          m_TargetAssemblyTypeName: ButtonScale, Assembly-CSharp
+          m_MethodName: ButtonScaleReturn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1978633294}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1997997784
 GameObject:
   m_ObjectHideFlags: 0
@@ -11296,8 +11544,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11431,8 +11679,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11970,6 +12218,7 @@ GameObject:
   - component: {fileID: 2075750476}
   - component: {fileID: 2075750475}
   - component: {fileID: 2075750474}
+  - component: {fileID: 2075750478}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12068,6 +12317,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2075750478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075750473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dbdc4cfb84540cbba74afee378f5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2085345386
 GameObject:
   m_ObjectHideFlags: 0

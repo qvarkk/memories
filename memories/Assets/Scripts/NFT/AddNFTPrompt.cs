@@ -20,6 +20,7 @@ public class AddNFTPrompt : MonoBehaviour
     [SerializeField] GameObject image;
     [SerializeField] GameObject[] coordinatesSemple;
     [SerializeField] Button reloadButton;
+    [SerializeField] NFTForList dropdownScript;
 
     GameObject[] imagesArray;
     GameObject imageToChange;
@@ -40,8 +41,14 @@ public class AddNFTPrompt : MonoBehaviour
 
     NFTs_model NFTsOfUser;
 
+    private Action callback;
+
     public class Response {
         public string image;
+    }
+
+    private void Start() {
+        SetupCallback();
     }
 
     public void StartAccountCheck() {
@@ -153,6 +160,7 @@ public class AddNFTPrompt : MonoBehaviour
             imageRenderer.sprite = Sprite.Create(loadedTexture, new Rect(0f, 0f, loadedTexture.width, loadedTexture.height), Vector2.zero);
         }
         ThrowALoadingScreen();
+        dropdownScript.StateChange();
     }
 
     public void ClearNFTs(){
@@ -168,7 +176,7 @@ public class AddNFTPrompt : MonoBehaviour
                 File.Delete(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + i.ToString()) + ".png");
         }
         PlayerPrefs.SetInt("SkinsQuantity", 0);
-        
+        dropdownScript.StateChange();
     }
 
     public void ThrowAnError(string error)
@@ -189,28 +197,32 @@ public class AddNFTPrompt : MonoBehaviour
         loadingText.text = msg;
     }
 
-    public void ThrowAConfirmScreen(string msg, Action yesAction)
+    public void SetupCallback()
     {
+        confirmButton.onClick.AddListener(() => {
+            callback?.Invoke();
+            confirmField.SetActive(false);
+        });
+    }
+
+    public void ThrowAConfirmScreen(string msg, Action func)
+    {
+        callback = func;
         confirmField.SetActive(true);
         confirmText.text = msg;
 
-        confirmButton.onClick.AddListener(() => {
-            confirmField.SetActive(false);
-            yesAction();
-        });
         cancelButton.onClick.AddListener(() => {
             confirmField.SetActive(false);
-            yesAction = null;
         });
     }
 
     public void ChooseNFT(){
         if (File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()) + ".png")){
             PlayerPrefs.SetString("SelectedSkin", PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()));
-            ThrowAnSuccessMessage("Скин успешно выбран!!!");
+            ThrowAnSuccessMessage("Скин успешно выбран!");
         }
         else{
-            ThrowAnError("ті больной?");
+            ThrowAnError("Такого файла не существует.");
         }
     }
 }

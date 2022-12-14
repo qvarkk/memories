@@ -16,8 +16,21 @@ public class LoadImagesToUI : MonoBehaviour
     GameObject imageToChange;
     [SerializeField] AddNFTPrompt script;
 
+    [SerializeField] TMP_Dropdown dropdown;
+    [SerializeField] ImageForList dropdownScript;
+
     private void Start() {
         RefreshPictures();
+    }
+
+    public void RemovePictureFromUI()
+    {
+        contractList.text = "Название";
+        foreach (Transform child in imageList.transform)
+        {
+             Destroy(child.gameObject);
+        }
+        dropdownScript.StateChange();
     }
 
     public void RefreshPictures()
@@ -48,17 +61,31 @@ public class LoadImagesToUI : MonoBehaviour
 
     public void DeletePicture()
     {
-        for (int i = 1; i < PlayerPrefs.GetInt("TexturesQuantity") + 1; i++)
-        {
-            if (!File.Exists(Application.persistentDataPath + "/playerTexture" + i.ToString() + ".png"))
+        script.ThrowAConfirmScreen("Вы уверены? Вы не сможете их вернуть.", () => {
+            for (int i = 1; i < PlayerPrefs.GetInt("TexturesQuantity") + 1; i++)
             {
-                script.ThrowAnError("Произошла системная ошибка. Нахуя ты файлы дергал.");
-                continue;
+                if (!File.Exists(Application.persistentDataPath + "/playerTexture" + i.ToString() + ".png"))
+                {
+                    script.ThrowAnError("Произошла системная ошибка. Нахуя ты файлы дергал.");
+                    continue;
+                }
+                File.Delete(Application.persistentDataPath + "/" + "playerTexture" + i.ToString() + ".png");
+                PlayerPrefs.SetString("TextureName" + i.ToString(), "");
             }
-            File.Delete(Application.persistentDataPath + "/" + "playerTexture" + i.ToString() + ".png");
-            PlayerPrefs.SetString("TextureName" + i.ToString(), "");
+            PlayerPrefs.SetInt("TexturesQuantity", 0);
+            RemovePictureFromUI();
+            RefreshPictures();
+        });
+    }
+
+    public void ChooseSkin()
+    {
+        if (File.Exists(Application.persistentDataPath + "/playerTexture" + (dropdown.value + 1).ToString() + ".png")){
+            PlayerPrefs.SetString("SelectedSkin", "playerTexture" + (dropdown.value + 1).ToString());
+            script.ThrowAnSuccessMessage("Скин успешно выбран!");
         }
-        PlayerPrefs.SetInt("TexturesQuantity", 0);
-        RefreshPictures();
+        else{
+            script.ThrowAnError("Такого файла не существует.");
+        }
     }
 }

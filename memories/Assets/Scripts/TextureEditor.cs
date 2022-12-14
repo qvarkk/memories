@@ -121,6 +121,6 @@ public class TextureEditor : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        script.ThrowAConfirmScreen("Вы действительно хотите вернуться?", () => {SceneManager.LoadScene(1); Debug.Log("qqqq");});
+        script.ThrowAConfirmScreen("Вы действительно хотите вернуться?", () => {SceneManager.LoadScene(1);});
     }
 }

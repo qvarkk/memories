@@ -5,16 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
-  [SerializeField] AddNFTPrompt script;
-
   public void LoadMainMenu()
   {
     SceneManager.LoadScene(1);
   }
 
-  public void LoadScene(int levelNumber)
+  public void LoadLevel(int levelNumber)
   {
-    SceneManager.LoadScene(levelNumber);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + levelNumber);
   }
 
   public void LoadConstructor()
@@ -24,8 +22,8 @@ public class ScenesManager : MonoBehaviour
 
   public void ExitGame()
   {
-    script.ThrowAConfirmScreen("Вы действительно хотите выйти?", () => {
-      Application.Quit();
-    });
+    // на билде главное не забыть убрать некст линию
+    UnityEditor.EditorApplication.isPlaying = false;
+    Application.Quit();
   }
 }

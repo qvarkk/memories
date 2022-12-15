@@ -44,7 +44,7 @@ public class MenuCube : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            sprite.transform.Rotate(Vector3.back * 0.5f);
+            sprite.transform.Rotate(new Vector3(0, 0, -5));
         }
         transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
     }

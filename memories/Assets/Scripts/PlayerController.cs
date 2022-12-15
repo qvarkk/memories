@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
   [SerializeField] private LayerMask groundLayer;
   [SerializeField] private GameObject levelObject;
   [SerializeField] private ParticleSystem particle;
+  [SerializeField] private GameObject shipSprite;
 
   public Gamemodes currentGamemode;
   public GameController gameController;
@@ -121,12 +122,12 @@ public class PlayerController : MonoBehaviour
 
   public void ChangeThroughPortal(Gamemodes gamemode, int state)
   {
-    // короче вродеб пиздатое решение, еще кучу модов можно захуярить и все должно быть збс
     switch (state)
     {
       case 0:
         rb.gravityScale = 10;
         currentGamemode = gamemode;
+        shipSprite.SetActive(false);
         isShip = false;
         break;
       case 1:
@@ -135,6 +136,7 @@ public class PlayerController : MonoBehaviour
         break;
       case 2:
         sprite.rotation = Quaternion.identity;
+        shipSprite.SetActive(true);
         isShip = true;
         break;
     }

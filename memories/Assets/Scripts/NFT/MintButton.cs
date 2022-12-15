@@ -13,16 +13,6 @@ public class MintButton : MonoBehaviour
     [SerializeField] TMP_InputField nameField;
     [SerializeField] TMP_InputField descField;
     [SerializeField] AddNFTPrompt script;
-    [SerializeField] Button viewNFTBtn;
-
-    private void Awake() {
-        if (PlayerPrefs.GetInt("NFTMode") == 0)
-        {
-            script.ThrowAnError("Файл с рисунком не был найден. Возможно вы выбрали слишком большой номер рисунка.");
-            gameObject.GetComponent<Button>().interactable = false;
-            viewNFTBtn.interactable = false;
-        }
-    }
 
     public void MintPicture()
     {

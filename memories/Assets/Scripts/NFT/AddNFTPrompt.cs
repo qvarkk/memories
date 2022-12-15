@@ -38,6 +38,8 @@ public class AddNFTPrompt : MonoBehaviour
     [SerializeField] Button confirmButton;
     [SerializeField] Button cancelButton;
 
+    [SerializeField] Button listNFTBtn;
+    [SerializeField] Button mintNFTBtn;
 
     NFTs_model NFTsOfUser;
 
@@ -49,6 +51,14 @@ public class AddNFTPrompt : MonoBehaviour
 
     private void Start() {
         SetupCallback();
+    }
+
+    private void Awake() {
+        if (PlayerPrefs.GetInt("NFTMode") == 0)
+        {
+            mintNFTBtn.interactable = false;
+            listNFTBtn.interactable = false;
+        }
     }
 
     public void StartAccountCheck() {

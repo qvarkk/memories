@@ -96,7 +96,7 @@ public class TextureEditor : MonoBehaviour
     public void SavePlayerImage()
     {
         script.ThrowAConfirmScreen("Вы действительно хотите сохранить картинку?", () => {
-            if (nameInput.text != "" && clickCount > 0)
+            if (nameInput.text != "" && clickCount > 0 && nameInput.text.Length <= 32)
             {
                 if (PlayerPrefs.GetInt("TexturesQuantity") > 5)
                 {
@@ -111,6 +111,10 @@ public class TextureEditor : MonoBehaviour
                 PlayerPrefs.SetString("TextureName" + (PlayerPrefs.GetInt("TexturesQuantity")).ToString(), nameInput.text);
 
                 SceneManager.LoadScene(1);
+            }
+            else if (nameInput.text.Length > 32)
+            {
+                script.ThrowAnError("Длина названия должна быть до 32 символов");
             }
             else
             {

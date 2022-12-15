@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
+  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3009,7 +3009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f9a2a55d0f4f89b43b90f468dd8e219f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad46ad688dacfd24194acdbf4a1b885c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3415,7 +3415,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4381,6 +4381,8 @@ MonoBehaviour:
   dropdown: {fileID: 895986257}
   confirmButton: {fileID: 837929435}
   cancelButton: {fileID: 21854440}
+  listNFTBtn: {fileID: 2126230889}
+  mintNFTBtn: {fileID: 1873342766}
 --- !u!1 &796628260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5305,7 +5307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
+  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5389,7 +5391,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f9a2a55d0f4f89b43b90f468dd8e219f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad46ad688dacfd24194acdbf4a1b885c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5645,7 +5647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1236129998}
-  noImageSprite: {fileID: 21300000, guid: 88ad5eb36b37a49c1a9b6013d4b751c2, type: 3}
+  noImageSprite: {fileID: 21300000, guid: 7198be220cbf83344a121040c9e9c0e5, type: 3}
 --- !u!1 &955183150
 GameObject:
   m_ObjectHideFlags: 0
@@ -6086,7 +6088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f9a2a55d0f4f89b43b90f468dd8e219f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad46ad688dacfd24194acdbf4a1b885c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6408,7 +6410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 5dd558fa5aad7594ca78f22c1ef91c32, type: 2}
-  m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
+  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7900,7 +7902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 8657665723818598792}
-  noImageSprite: {fileID: 21300000, guid: 88ad5eb36b37a49c1a9b6013d4b751c2, type: 3}
+  noImageSprite: {fileID: 21300000, guid: 7198be220cbf83344a121040c9e9c0e5, type: 3}
 --- !u!1 &1296448177
 GameObject:
   m_ObjectHideFlags: 0
@@ -8715,7 +8717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 5dd558fa5aad7594ca78f22c1ef91c32, type: 2}
-  m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
+  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9713,7 +9715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f9a2a55d0f4f89b43b90f468dd8e219f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad46ad688dacfd24194acdbf4a1b885c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11094,7 +11096,6 @@ MonoBehaviour:
   nameField: {fileID: 823027614}
   descField: {fileID: 2096459712}
   script: {fileID: 773202120}
-  viewNFTBtn: {fileID: 2126230889}
 --- !u!1 &1893869114
 GameObject:
   m_ObjectHideFlags: 0
@@ -11181,7 +11182,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5137255, g: 0.8431373, b: 0.92549026, a: 1}
+  m_Color: {r: 0, g: 0.7607844, b: 0.9490197, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

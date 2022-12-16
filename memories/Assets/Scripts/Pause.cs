@@ -12,6 +12,10 @@ public class Pause : MonoBehaviour
 
     private static bool gameIsPaused = false;
     
+    private void Awake() {
+        Resume();
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)){

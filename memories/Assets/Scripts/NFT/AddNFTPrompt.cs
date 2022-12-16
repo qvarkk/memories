@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 using TMPro;
 using NFTPort;
 using UnityEngine.UI;
+// using System.Numerics;
 using System.Net;
 
 
@@ -100,13 +101,38 @@ public class AddNFTPrompt : MonoBehaviour
                     if (uri.StartsWith("ipfs://"))
                     {
                         uri = uri.Replace("ipfs://", "https://ipfs.io/ipfs/");
+                    } 
+                    else if (uri.EndsWith("{id}"))
+                    {
+                        uri = uri.Replace("{id}", (System.Numerics.BigInteger.Parse(tokenId)).ToString("X"));
                     }
                 
                     UnityWebRequest webRequest = UnityWebRequest.Get(uri);
                     await webRequest.SendWebRequest();
-                    Response data = JsonUtility.FromJson<Response>(System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data));
+                    Response data;
 
-                    string imageUri = data.image;
+                    try
+                    {
+                        data = JsonUtility.FromJson<Response>(System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data));
+                    }
+                    catch (ArgumentException e)
+                    {
+                        ThrowAnError("Произошла ошибка на сервере. Возможно не все NFT будут загружены");
+                        wereAnyErrors = true;
+                        break;
+                    }
+
+                    string imageUri;
+                    
+                    if (data.image != null)
+                        imageUri = data.image;
+                    else
+                    {
+                        ThrowAnError("Произошла ошибка на сервере. Возможно не все NFT будут загружены");
+                        wereAnyErrors = true;
+                        break;
+                    }
+
                     if (imageUri.StartsWith("ipfs://"))
                     {
                         imageUri = imageUri.Replace("ipfs://", "https://ipfs.io/ipfs/");
@@ -114,11 +140,11 @@ public class AddNFTPrompt : MonoBehaviour
                     UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(imageUri);
                     await textureRequest.SendWebRequest();
 
-                    byte[] textureBytes = ((DownloadHandlerTexture)textureRequest.downloadHandler).texture.EncodeToPNG();
-                    File.WriteAllBytes(Application.persistentDataPath +"/" + contract + tokenId + ".png", textureBytes);
-
                     PlayerPrefs.SetInt("SkinsQuantity", PlayerPrefs.GetInt("SkinsQuantity") + 1);
                     PlayerPrefs.SetString("SkinContract" + PlayerPrefs.GetInt("SkinsQuantity").ToString(), contract + tokenId);
+
+                    byte[] textureBytes = ((DownloadHandlerTexture)textureRequest.downloadHandler).texture.EncodeToPNG();
+                    File.WriteAllBytes(Application.persistentDataPath +"/" + contract + tokenId + ".png", textureBytes);
 
                     savedImages++;
                 }
@@ -156,7 +182,12 @@ public class AddNFTPrompt : MonoBehaviour
             }
 
             Vector3 coord = coordinatesSemple[i-1].transform.position;
-            contractList.text += "\n\n" + PlayerPrefs.GetString("SkinContract" + i.ToString());
+
+            if (PlayerPrefs.GetString("SkinContract" + i.ToString()).Length > 33)
+                contractList.text += "\n\n" + PlayerPrefs.GetString("SkinContract" + i.ToString())[0..30] + "...";
+            else
+                contractList.text += "\n\n" + PlayerPrefs.GetString("SkinContract" + i.ToString());
+
             Instantiate(image, coord, Quaternion.identity, imageList.transform);
 
             imagesArray = GameObject.FindGameObjectsWithTag("nftImage");
@@ -181,9 +212,10 @@ public class AddNFTPrompt : MonoBehaviour
         contractList.text = "Контракты";
         for (int i = 1; i < PlayerPrefs.GetInt("SkinsQuantity") + 1; i++)
         {
+            if(!File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + i.ToString()) + ".png"))
+                ThrowAnError("Произошла ошибка чтения файлов. Если вы ничего не трогали, все будет работать как прежде");
+            File.Delete(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + i.ToString()) + ".png");
             PlayerPrefs.SetString("SkinContract" + i.ToString(), "");
-            if(File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + i.ToString()) + ".png"))
-                File.Delete(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + i.ToString()) + ".png");
         }
         PlayerPrefs.SetInt("SkinsQuantity", 0);
         dropdownScript.StateChange();

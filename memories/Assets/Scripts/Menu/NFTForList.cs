@@ -19,16 +19,19 @@ public class NFTForList : MonoBehaviour
 
     public void StateChange()
     {
-        if (File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()) + ".png"))
+        if (dropdown != null)
         {
-            byte[] byteTexture = File.ReadAllBytes(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()) + ".png");
-            Texture2D loadedTexture = new Texture2D(0, 0);
-            loadedTexture.LoadImage(byteTexture);
-            image.sprite = Sprite.Create(loadedTexture, new Rect(0f, 0f, loadedTexture.width, loadedTexture.height), Vector2.zero); 
-        }
-        else
-        {
-            image.sprite = noImageSprite;
+            if (File.Exists(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()) + ".png"))
+            {
+                byte[] byteTexture = File.ReadAllBytes(Application.persistentDataPath + "/" + PlayerPrefs.GetString("SkinContract" + (dropdown.value + 1).ToString()) + ".png");
+                Texture2D loadedTexture = new Texture2D(0, 0);
+                loadedTexture.LoadImage(byteTexture);
+                image.sprite = Sprite.Create(loadedTexture, new Rect(0f, 0f, loadedTexture.width, loadedTexture.height), Vector2.zero); 
+            }
+            else
+            {
+                image.sprite = noImageSprite;
+            }
         }
     }
 }
